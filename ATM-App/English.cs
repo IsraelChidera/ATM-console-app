@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Channels;
-
-namespace ATM_App
+﻿namespace ATM_App
 {
     internal class English
     {
@@ -24,7 +21,7 @@ namespace ATM_App
 
             ValidateCardNumber();
             ValidatePinNumber();
-            
+            Transactions();
         }
 
         public void ValidateCardNumber()
@@ -40,10 +37,10 @@ namespace ATM_App
                     {
                         Console.WriteLine("**********************************************");
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Congrats... Valid card number");                        
+                        Console.WriteLine("Congrats... Valid card number");
                         Console.WriteLine($"Card number: {cardNum}");
                         Console.ResetColor();
-                        Console.WriteLine("**********************************************");
+                        Console.WriteLine("**********************************************\n");
                         break;
                     }
                     else
@@ -58,33 +55,35 @@ namespace ATM_App
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\nPlease enter a valid card number");
-                    
+
                     Console.WriteLine(exception.Message);
                     Console.ResetColor();
                     continue;
                 }
             }
-            
-            
+
+
         }
-        
+
         public void ValidatePinNumber()
         {
 
-            Console.WriteLine("Pin must be up to 4 digits");
+            Console.WriteLine("\nPin must be up to 4 digits");
             string pinNumber = Console.ReadLine();
             Console.WriteLine(pinNumber);
-            
+
             while (true)
             {
                 try
                 {
                     if (pinNumber.Length == 4 && int.TryParse(pinNumber, out int pinNum))
                     {
-                        Console.WriteLine("**********************************************");                    
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("\n**********************************************");
                         Console.WriteLine($"PIN: {pinNum}");
                         Console.WriteLine("Congrats... You can now do your transactions");
                         Console.WriteLine("**********************************************");
+                        Console.ResetColor();
                         break;
                     }
                     else
@@ -102,6 +101,62 @@ namespace ATM_App
                     continue;
                 }
             }
+        }
+
+        public void Transactions()
+        {
+            int amount = 2034, deposit, withdraw;
+            int choice, pin = 0, x = 0;
+            Console.WriteLine("\nWhat do you want to do?");
+            //Console.WriteLine("Press 1 to withdraw funds\nPress 2 to transfer funds\nPress 3 to check balance");
+
+
+            while (true)
+            {
+                Console.WriteLine("WELCOME TO YES BANK ATM SERVICE\n");
+                Console.WriteLine("1. Current Balance\n");
+                Console.WriteLine("2. Withdraw \n");
+                Console.WriteLine("3. Deposit \n");
+                Console.WriteLine("4. Cancel \n");
+                Console.WriteLine("***************\n\n");
+                Console.WriteLine("ENTER YOUR CHOICE : ");
+                choice = int.Parse(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1:
+                        Console.WriteLine("\n YOUR CURRENT BALANCE IS $ {0} ", amount);
+                        break;
+                    case 2:
+                        Console.WriteLine("\n ENTER THE WITHDRAW AMOUNT : ");
+                        withdraw = int.Parse(Console.ReadLine());
+                        if (withdraw % 100 != 0)
+                        {
+                            Console.WriteLine("\n PLEASE ENTER THE AMOUNT IN ABOVE 100");
+                        }
+                        else if (withdraw > (amount - 1000))
+                        {
+                            Console.WriteLine("\n SORRY! INSUFFICENT BALANCE");
+                        }
+                        else
+                        {
+                            amount = amount - withdraw;
+                            Console.WriteLine("\n\n PLEASE COLLECT YOUR CASH");
+                            Console.WriteLine("\n CURRENT BALANCE IS Rs : {0}", amount);
+                        }
+                        break;
+                    case 3:
+                        Console.WriteLine("\n ENTER THE DEPOSIT AMOUNT");
+                        deposit = int.Parse(Console.ReadLine());
+                        amount = amount + deposit;
+                        Console.WriteLine("YOUR AMOUNT HAS BEEN DEPOSITED SUCCESSFULLY..");
+                        Console.WriteLine("YOUR TOTAL BALANCE IS Rs : {0}", amount);
+                        break;
+                    case 4:
+                        Console.WriteLine("\n THANK YOU…");  
+                            break;
+                }
+            }
+
         }
     }
 }
