@@ -24,8 +24,8 @@ namespace ATM_App
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("*********************************************************\n");
             Console.WriteLine("If you want to be serviced in English press 1\n");
-            Console.WriteLine("If you want to be serviced in Pidgin press 2\n");
-            Console.WriteLine("If you want to be serviced in Igbo press 3\n");
+            Console.WriteLine("If you want to be serviced in Igbo press 2\n");
+            Console.WriteLine("If you want to be serviced in Pidgin press 3\n");
             Console.WriteLine("To exit this process, press 4\n");
             Console.WriteLine("*********************************************************\n");
             Console.ResetColor();
@@ -49,14 +49,14 @@ namespace ATM_App
                     {
                         Console.WriteLine("Igbo continues");
                         Igbo igbo = new();
-                        igbo.speakIgbo();
+                        igbo.IgboATM();
                         break;
                     }
                     else if (inputLanguageType == 3)
                     {
                         Console.WriteLine("Pidgin continues");
                         Pidgin pidgin = new();
-                        pidgin.speakPidgin();
+                        pidgin.ATMPidgin();
                         break;
                     }
                     else if (inputLanguageType == 4)

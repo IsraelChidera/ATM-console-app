@@ -121,7 +121,7 @@
                 Console.WriteLine("\tType 3 to transfer funds \n");
                 Console.WriteLine("\tType 4 to cancel transactions \n");
                 Console.WriteLine("****************************************************\n\n");
-                Console.WriteLine("ENTER YOUR CHOICE : ");
+                Console.WriteLine("========>");
                 Console.ResetColor();
 
                 choice = int.Parse(Console.ReadLine());
@@ -141,7 +141,7 @@
                         }
                         else if (withdraw > (amount - 1000))
                         {
-                            Console.WriteLine("\n SORRY! INSUFFICENT FUNDS");
+                            Console.WriteLine("\nSORRY! INSUFFICENT FUNDS");
                         }
                         else
                         {
@@ -158,7 +158,7 @@
                         Console.WriteLine("YOUR TOTAL BALANCE IS $ {0}", amount);
                         break;
                     case 4:
-                        Console.WriteLine("THANK YOU… See you later");
+                        Console.WriteLine("Thank you for banking with us...");
                         isTrue = false;
                         break;
                 }
