@@ -17,7 +17,7 @@
             Console.ResetColor();
 
             Console.WriteLine("Since this a simulation of an ATM");
-            Console.WriteLine("We will be using the card number to use the ATM\n");
+            Console.WriteLine("We will be using the card number to use the ATM\n\n");
 
             ValidateCardNumber();
             ValidatePinNumber();
@@ -36,7 +36,7 @@
                     if (cardNumber.Length == 6 && int.TryParse(cardNumber, out int cardNum))
                     {
                         Console.WriteLine("**********************************************");
-                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Congrats... Valid card number");
                         Console.WriteLine($"Card number: {cardNum}");
                         Console.ResetColor();
@@ -105,55 +105,62 @@
 
         public void Transactions()
         {
-            int amount = 2034, deposit, withdraw;
-            int choice, pin = 0, x = 0;
-            Console.WriteLine("\nWhat do you want to do?");
-            //Console.WriteLine("Press 1 to withdraw funds\nPress 2 to transfer funds\nPress 3 to check balance");
+            int amount = 2034;
+            int deposit;
+            int withdraw;
+            int choice;
+            Console.WriteLine("\n\nWHAT DO YOU WANT TO DO?");
+            bool isTrue = true;
 
-
-            while (true)
+            while (isTrue)
             {
-                Console.WriteLine("WELCOME TO YES BANK ATM SERVICE\n");
-                Console.WriteLine("1. Current Balance\n");
-                Console.WriteLine("2. Withdraw \n");
-                Console.WriteLine("3. Deposit \n");
-                Console.WriteLine("4. Cancel \n");
-                Console.WriteLine("***************\n\n");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("****************AUTOMATED TELLER MACHINE**************\n");
+                Console.WriteLine("\tType 1 to view Current Balance\n");
+                Console.WriteLine("\tType 2 to withdraw funds\n");
+                Console.WriteLine("\tType 3 to transfer funds \n");
+                Console.WriteLine("\tType 4 to cancel transactions \n");
+                Console.WriteLine("****************************************************\n\n");
                 Console.WriteLine("ENTER YOUR CHOICE : ");
+                Console.ResetColor();
+
                 choice = int.Parse(Console.ReadLine());
                 switch (choice)
                 {
                     case 1:
-                        Console.WriteLine("\n YOUR CURRENT BALANCE IS $ {0} ", amount);
+                        Console.WriteLine("\n****************************************");
+                        Console.WriteLine("YOUR CURRENT BALANCE IS $ {0} ", amount);
+                        Console.WriteLine("****************************************");
                         break;
                     case 2:
-                        Console.WriteLine("\n ENTER THE WITHDRAW AMOUNT : ");
+                        Console.WriteLine("\nENTER AMOUNT IN $$ TO WITHDRAW : ");
                         withdraw = int.Parse(Console.ReadLine());
                         if (withdraw % 100 != 0)
-                        {
-                            Console.WriteLine("\n PLEASE ENTER THE AMOUNT IN ABOVE 100");
+                        {                            
+                            Console.WriteLine("\nPLEASE ENTER THE AMOUNT IN ABOVE 100");
                         }
                         else if (withdraw > (amount - 1000))
                         {
-                            Console.WriteLine("\n SORRY! INSUFFICENT BALANCE");
+                            Console.WriteLine("\n SORRY! INSUFFICENT FUNDS");
                         }
                         else
                         {
                             amount = amount - withdraw;
-                            Console.WriteLine("\n\n PLEASE COLLECT YOUR CASH");
-                            Console.WriteLine("\n CURRENT BALANCE IS Rs : {0}", amount);
+                            Console.WriteLine("\n\nPLEASE COLLECT YOUR CASH");
+                            Console.WriteLine("\nCURRENT BALANCE IS $ {0}", amount);
                         }
                         break;
                     case 3:
-                        Console.WriteLine("\n ENTER THE DEPOSIT AMOUNT");
+                        Console.WriteLine("\nENTER THE AMOUNT YOU WANT TO TRANSFER(IN $$)");
                         deposit = int.Parse(Console.ReadLine());
                         amount = amount + deposit;
                         Console.WriteLine("YOUR AMOUNT HAS BEEN DEPOSITED SUCCESSFULLY..");
-                        Console.WriteLine("YOUR TOTAL BALANCE IS Rs : {0}", amount);
+                        Console.WriteLine("YOUR TOTAL BALANCE IS $ {0}", amount);
                         break;
                     case 4:
-                        Console.WriteLine("\n THANK YOU…");  
-                            break;
+                        Console.WriteLine("THANK YOU… See you later");
+                        isTrue = false;
+                        break;
                 }
             }
 
