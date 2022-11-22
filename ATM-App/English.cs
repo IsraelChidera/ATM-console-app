@@ -1,4 +1,5 @@
-﻿using System.Threading.Channels;
+﻿using System;
+using System.Threading.Channels;
 
 namespace ATM_App
 {
@@ -22,9 +23,8 @@ namespace ATM_App
             Console.WriteLine("We will be using the card number to use the ATM\n");
 
             ValidateCardNumber();
-            /*string pin = Console.ReadLine();
-            Console.WriteLine("Pin must be 4 digits\n");
-            Console.WriteLine("");*/
+            ValidatePinNumber();
+            
         }
 
         public void ValidateCardNumber()
@@ -38,21 +38,28 @@ namespace ATM_App
                 {
                     if (cardNumber.Length == 6 && int.TryParse(cardNumber, out int cardNum))
                     {
+                        Console.WriteLine("**********************************************");
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Congrats... Valid card number");                        
-                        Console.WriteLine($"card num: {cardNum}");
-                        Console.WriteLine("You can input your pin to start your transaction");
+                        Console.WriteLine($"Card number: {cardNum}");
+                        Console.ResetColor();
+                        Console.WriteLine("**********************************************");
                         break;
                     }
                     else
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Invalid input. Please try again");
-                        cardNumber = Console.ReadLine();                        
+                        cardNumber = Console.ReadLine();
+                        Console.ResetColor();
                     }
                 }
-                catch (FormatException)
+                catch (Exception exception)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Please enter a valid number");
+                    Console.WriteLine("\nPlease enter a valid card number");
+                    
+                    Console.WriteLine(exception.Message);
                     Console.ResetColor();
                     continue;
                 }
@@ -67,6 +74,34 @@ namespace ATM_App
             Console.WriteLine("Pin must be up to 4 digits");
             string pinNumber = Console.ReadLine();
             Console.WriteLine(pinNumber);
+            
+            while (true)
+            {
+                try
+                {
+                    if (pinNumber.Length == 4 && int.TryParse(pinNumber, out int pinNum))
+                    {
+                        Console.WriteLine("**********************************************");                    
+                        Console.WriteLine($"PIN: {pinNum}");
+                        Console.WriteLine("Congrats... You can now do your transactions");
+                        Console.WriteLine("**********************************************");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid PIN. Please try again");
+                        pinNumber = Console.ReadLine();
+                    }
+                }
+                catch (Exception exception)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Please enter a PIN number");
+                    Console.WriteLine(exception.Message);
+                    Console.ResetColor();
+                    continue;
+                }
+            }
         }
     }
 }
