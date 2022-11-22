@@ -126,7 +126,7 @@ namespace ATM_App
                 Console.WriteLine("\tType 3 to transfer funds \n");
                 Console.WriteLine("\tType 4 to cancel transactions \n");
                 Console.WriteLine("****************************************************\n\n");
-                Console.Write("========>");
+                Console.Write("========> ");
                 Console.ResetColor();
 
                 userInput = int.Parse(Console.ReadLine());

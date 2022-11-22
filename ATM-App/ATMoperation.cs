@@ -6,27 +6,11 @@ using System.Threading.Tasks;
 
 namespace ATM_App
 {
-    internal class Pidgin
+    class ATMoperation
     {
-        public Pidgin()
+        public ATMoperation()
         {
-            
-        }
 
-        public void ATMPidgin()
-        {
-            Console.WriteLine("************* Automated Teller Machine ******************");
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("\tVersion na version 1.3");
-            Console.WriteLine("\tLanguage na Pidgin\n");
-            Console.ResetColor();
-
-            Console.WriteLine("This wan na simulation of how ATM suppose be");
-            Console.WriteLine("This ATM go require card number and pin\n\n");
-
-            ValidateCardNumber();
-            ValidatePinNumber();
-            Transactions();
         }
 
         public void ValidateCardNumber()
