@@ -24,7 +24,7 @@ namespace ATM_App
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("*********************************************************\n");
             Console.WriteLine("If you want to be serviced in English press 1\n");
-            Console.WriteLine("If you want to be serviced in Igbo press 2\n");
+            Console.WriteLine(@"O buru n’ichoro ka e were gi ozi n’Igbo pia 2\n");
             Console.WriteLine("If you want to be serviced in Pidgin press 3\n");
             Console.WriteLine("To exit this process, press 4\n");
             Console.WriteLine("*********************************************************\n");
@@ -75,8 +75,7 @@ namespace ATM_App
             }
             
 
-            //int inputLanguageType = Convert.ToInt32(Console.ReadLine());
-            //Console.WriteLine(inputLanguageType);
+            
         }
     }
 }

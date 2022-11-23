@@ -18,11 +18,11 @@ namespace ATM_App
             Console.WriteLine("************* Automated Teller Machine ******************");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("\tVersion: version 1.3");
-            Console.WriteLine("\tAsusu bu Igbo\n");
+            Console.WriteLine("\tAsusu : Igbo\n");
             Console.ResetColor();
 
-            Console.WriteLine("Nka bu a simulation of an ATM");
-            Console.WriteLine("We will be using the card number to use the ATM\n\n");
+            Console.WriteLine("Nke a bu ime anwansi nke kaadi ATM");
+            Console.WriteLine("Anyi ga-eji nomba kaadi iji ATM\n\n");
 
             ValidateCardNumber();
             ValidatePinNumber();
@@ -31,7 +31,7 @@ namespace ATM_App
 
         public void ValidateCardNumber()
         {
-            Console.WriteLine("Card number must be up to 6 digits");
+            Console.WriteLine("Nomba kaadi ga-eruriri nkeji isii");
 
             string cardNumber = Console.ReadLine();
             while (true)
@@ -42,8 +42,8 @@ namespace ATM_App
                     {
                         Console.WriteLine("**********************************************");
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("Congrats... Valid card number");
-                        Console.WriteLine($"Card number: {cardNum}");
+                        Console.WriteLine("Ekele... Nomba kaadi adabara");
+                        Console.WriteLine($"Nomba kaadi: {cardNum}");
                         Console.ResetColor();
                         Console.WriteLine("**********************************************\n");
                         break;
@@ -51,7 +51,7 @@ namespace ATM_App
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Invalid input. Please try again");
+                        Console.WriteLine("Nomba kaadi ga-eruriri nkeji isii");
                         cardNumber = Console.ReadLine();
                         Console.ResetColor();
                     }
@@ -59,7 +59,7 @@ namespace ATM_App
                 catch (Exception exception)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\nPlease enter a valid card number");
+                    Console.WriteLine("\n\r\nBiko tinye nọmba kaadị bara uru");
 
                     Console.WriteLine(exception.Message);
                     Console.ResetColor();
@@ -73,7 +73,7 @@ namespace ATM_App
         public void ValidatePinNumber()
         {
 
-            Console.WriteLine("\nPin must be up to 4 digits");
+            Console.WriteLine("\nNtutu ga-eruriri onuogu ano");
             string pinNumber = Console.ReadLine();
             Console.WriteLine(pinNumber);
 
@@ -86,21 +86,21 @@ namespace ATM_App
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("\n**********************************************");
                         Console.WriteLine($"PIN: {pinNum}");
-                        Console.WriteLine("Congrats... You can now do your transactions");
+                        Console.WriteLine("Ekele... I nwere ike ime azumahia gi ugbu a");
                         Console.WriteLine("**********************************************");
                         Console.ResetColor();
                         break;
                     }
                     else
                     {
-                        Console.WriteLine("Invalid PIN. Please try again");
+                        Console.WriteLine("PIN ezighi ezi. Biko nwaa ozo");
                         pinNumber = Console.ReadLine();
                     }
                 }
                 catch (Exception exception)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Please enter a PIN number");
+                    Console.WriteLine("\r\nBiko tinye nomba PIN");
                     Console.WriteLine(exception.Message);
                     Console.ResetColor();
                     continue;
@@ -114,17 +114,17 @@ namespace ATM_App
             int deposit;
             int withdraw;
             int userInput;
-            Console.WriteLine("\n\nWHAT DO YOU WANT TO DO?");
+            Console.WriteLine("\n\nKEDU IHE I CHORO IME?");
             bool isTrue = true;
 
             while (isTrue)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("****************AUTOMATED TELLER MACHINE**************\n");
-                Console.WriteLine("\tType 1 to view Current Balance\n");
-                Console.WriteLine("\tType 2 to withdraw funds\n");
-                Console.WriteLine("\tType 3 to transfer funds \n");
-                Console.WriteLine("\tType 4 to cancel transactions \n");
+                Console.WriteLine("\tPinye 1 ka ilele nha nha ugbu a\n");
+                Console.WriteLine("\tUdi 2 iji wepu ego\n");
+                Console.WriteLine("\tUdi 3 iji nyefee ego \n");
+                Console.WriteLine("\tPinye 4 ka ikagbu azumahia \n");
                 Console.WriteLine("****************************************************\n\n");
                 Console.Write("========> ");
                 Console.ResetColor();
@@ -134,36 +134,36 @@ namespace ATM_App
                 {
                     case 1:
                         Console.WriteLine("\n****************************************");
-                        Console.WriteLine("YOUR CURRENT BALANCE IS $ {0} ", amount);
+                        Console.WriteLine("Nhazi gi ugbu a bu $ {0} ", amount);
                         Console.WriteLine("****************************************");
                         break;
                     case 2:
-                        Console.WriteLine("\nENTER AMOUNT IN $$ TO WITHDRAW : ");
+                        Console.WriteLine("\nTinye ego na $$ ka iwepu : ");
                         withdraw = int.Parse(Console.ReadLine());
                         if (withdraw % 100 != 0)
                         {
-                            Console.WriteLine("\nPLEASE ENTER THE AMOUNT IN ABOVE 100");
+                            Console.WriteLine("\nBiko tinye ego n'ihe kariri 100");
                         }
                         else if (withdraw > (amount - 1000))
                         {
-                            Console.WriteLine("\nSORRY! INSUFFICENT FUNDS");
+                            Console.WriteLine("\nNdo! EGO NA-ECHICHE");
                         }
                         else
                         {
                             amount = amount - withdraw;
-                            Console.WriteLine("\n\nPLEASE COLLECT YOUR CASH");
-                            Console.WriteLine("\nCURRENT BALANCE IS $ {0}", amount);
+                            Console.WriteLine("\n\nBiko chikota ego gi");
+                            Console.WriteLine("\nNhazi oge ugbu a bu $ {0}", amount);
                         }
                         break;
                     case 3:
-                        Console.WriteLine("\nENTER THE AMOUNT YOU WANT TO TRANSFER(IN $$)");
+                        Console.WriteLine("\nTinye ego i choro ibufe(na $$)");
                         deposit = int.Parse(Console.ReadLine());
                         amount = amount + deposit;
-                        Console.WriteLine("YOUR AMOUNT HAS BEEN DEPOSITED SUCCESSFULLY..");
-                        Console.WriteLine("YOUR TOTAL BALANCE IS $ {0}", amount);
+                        Console.WriteLine("Etinyela ego gi nke oma..");
+                        Console.WriteLine("Ngukota nguzozi gi bu $ {0}", amount);
                         break;
                     case 4:
-                        Console.WriteLine("Thank you for banking with us...");
+                        Console.WriteLine("Daalu maka gi na ulo aku...");
                         isTrue = false;
                         break;
                 }
