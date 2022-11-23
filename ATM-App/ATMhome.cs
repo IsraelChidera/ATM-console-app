@@ -25,13 +25,11 @@ namespace ATM_App
             Console.WriteLine("*********************************************************\n");
             Console.WriteLine("If you want to be serviced in English press 1\n");
             Console.WriteLine(@"O buru n’ichoro ka e were gi ozi n’Igbo pia 2\n");
-            Console.WriteLine("If you want to be serviced in Pidgin press 3\n");
+            Console.WriteLine("If you want make we service you with Pidgin, abeg press 3\n");
             Console.WriteLine("To exit this process, press 4\n");
             Console.WriteLine("*********************************************************\n");
             Console.ResetColor();
-
-            /*int inputLanguageType = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine(inputLanguageType);*/
+            
             while (_check)
             {
                 try
@@ -52,15 +50,15 @@ namespace ATM_App
                         break;
                     }
                     else if (inputLanguageType == 3)
-                    {
-                        Console.WriteLine("Pidgin continues");
+                    {                        
                         Pidgin pidgin = new();
                         pidgin.ATMPidgin();
                         break;
                     }
                     else if (inputLanguageType == 4)
                     {
-                        Console.WriteLine("Exit completed");
+                        Console.WriteLine("You have exited successfully!");
+                        Console.WriteLine("We will love to see you next time");
                         break;
                     }
                 }
