@@ -46,8 +46,7 @@ namespace ATM_App
                         break;
                     }
                     else if (inputLanguageType == 2)
-                    {
-                        Console.WriteLine("Igbo continues");
+                    {                        
                         Igbo igbo = new();
                         igbo.IgboATM();
                         break;
