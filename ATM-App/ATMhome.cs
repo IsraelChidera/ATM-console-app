@@ -8,29 +8,78 @@ namespace ATM_App
 {
     class ATMhome
     {
-        bool _check = true;
+        private bool _isTrue = true;
+        public English atmEnglish = new();
+        public Igbo atmIgbo = new();
+        public Pidgin atmPidgin = new();
+
+       /* public enum LanguageOptions:int
+        {
+            English=1,
+            Igbo,
+            Pidgin
+        }*/
 
         public ATMhome()
         {
 
         }
-
-        Title title = new();
+       
 
         public void Home()
-        {            
-            title.showTitle();
+        {                        
+
+            Utility.PressEnterToContinue();
+            Utility.Animation();
             
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("*********************************************************\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\n******************************************************************\n");
             Console.WriteLine("If you want to be serviced in English press 1\n");
             Console.WriteLine("O buru n’ichoro ka e were gi ozi n’Igbo pia 2\n");
             Console.WriteLine("If you want make we service you with Pidgin, abeg press 3\n");
             Console.WriteLine("To exit this process, press 4\n");
-            Console.WriteLine("*********************************************************\n");
+            Console.WriteLine("*****************************************************************\n");
             Console.ResetColor();
-            
-            while (_check)
+
+            while (_isTrue)
+            {
+                try
+                {
+                    int options = Convert.ToInt32(Console.ReadLine());
+                    
+                    switch (options)
+                    {
+                        case 1:
+                            Utility.Animation();
+                            atmEnglish.EnglishATM();
+                            break;
+                        case 2:
+                            Utility.Animation();
+                            atmIgbo.IgboATM();
+                            break;
+                        case 3:
+                            Utility.Animation();
+                            atmPidgin.ATMPidgin();
+                            break;
+                        default:
+                            Utility.Animation();
+                            Console.WriteLine("Invalid option. Select a valid option");
+                            break;
+                    }
+                }
+                catch(FormatException)
+                {
+                    Console.WriteLine("Please enter a valid input");
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+
+
+            /*while (_isTrue)
             {
                 try
                 {
@@ -61,6 +110,10 @@ namespace ATM_App
                         Console.WriteLine("We will love to see you next time");
                         break;
                     }
+                    else
+                    {
+                        Console.WriteLine("Invalid inputs... Type a valid number");
+                    }
                 }
                 catch(FormatException)
                 {
@@ -69,10 +122,10 @@ namespace ATM_App
                     Console.ResetColor();
                     continue;
                 }
-            }
-            
+            }*/
 
-            
+
+
         }
     }
 }

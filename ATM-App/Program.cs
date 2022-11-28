@@ -1,13 +1,16 @@
-﻿namespace ATM_App
-{
-    internal class Program
-    {
+﻿using System;
+
+namespace ATM_App
+{   
+
+     class Program
+    {        
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");            
 
-            ATMhome home = new ATMhome();
-            home.Home();
+            Title.showTitle();
+            ATMhome ATMshowcase = new ATMhome();
+            ATMshowcase.Home();
 
         }
     }

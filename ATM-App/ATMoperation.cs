@@ -24,7 +24,8 @@ namespace ATM_App
                 {
                     if (cardNumber.Length == 6 && int.TryParse(cardNumber, out int cardNum))
                     {
-                        Console.WriteLine("**********************************************");
+                        Utility.Animation();
+                        Console.WriteLine("\n**********************************************");
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Congrats... Valid card number");
                         Console.WriteLine($"Card number: {cardNum}");
@@ -34,8 +35,9 @@ namespace ATM_App
                     }
                     else
                     {
+                        Utility.Animation();
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Invalid input. Please try again");
+                        Console.WriteLine("\nInvalid input. Please try again");
                         cardNumber = Console.ReadLine();
                         Console.ResetColor();
                     }
@@ -67,6 +69,7 @@ namespace ATM_App
                 {
                     if (pinNumber.Length == 4 && int.TryParse(pinNumber, out int pinNum))
                     {
+                        Utility.Animation();
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("\n**********************************************");
                         Console.WriteLine($"PIN: {pinNum}");
@@ -103,25 +106,31 @@ namespace ATM_App
 
             while (isTrue)
             {
+                Utility.Animation();
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("****************AUTOMATED TELLER MACHINE**************\n");
                 Console.WriteLine("\tType 1 to view Current Balance\n");
                 Console.WriteLine("\tType 2 to withdraw funds\n");
                 Console.WriteLine("\tType 3 to transfer funds \n");
                 Console.WriteLine("\tType 4 to cancel transactions \n");
+                Console.WriteLine("\tType 5 to transfer cash \n");
+                Console.WriteLine("\tType 0 to change language/main menu \n");
                 Console.WriteLine("****************************************************\n\n");
                 Console.Write("========> ");
                 Console.ResetColor();
 
                 choice = int.Parse(Console.ReadLine());
+
                 switch (choice)
                 {
                     case 1:
+                        Utility.Animation();
                         Console.WriteLine("\n****************************************");
                         Console.WriteLine("YOUR CURRENT BALANCE IS $ {0} ", amount);
                         Console.WriteLine("****************************************");
                         break;
                     case 2:
+                        Utility.Animation();
                         Console.WriteLine("\nENTER AMOUNT IN $$ TO WITHDRAW : ");
                         withdraw = int.Parse(Console.ReadLine());
                         if (withdraw % 100 != 0)
@@ -140,6 +149,7 @@ namespace ATM_App
                         }
                         break;
                     case 3:
+                        Utility.Animation();
                         Console.WriteLine("\nENTER THE AMOUNT YOU WANT TO TRANSFER(IN $$)");
                         deposit = int.Parse(Console.ReadLine());
                         amount = amount + deposit;
@@ -147,10 +157,22 @@ namespace ATM_App
                         Console.WriteLine("YOUR TOTAL BALANCE IS $ {0}", amount);
                         break;
                     case 4:
+                        Utility.Animation();
                         Console.WriteLine("Thank you for banking with us...");
                         isTrue = false;
                         break;
+                    case 5:
+                        Console.WriteLine("Transfer ....");
+                        break;
+                    case 0:                        
+                        ATMhome home = new();
+                        home.Home();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid inputs . . .");
+                        break;
                 }
+
             }
 
         }

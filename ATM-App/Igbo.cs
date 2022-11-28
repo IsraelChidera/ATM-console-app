@@ -83,6 +83,7 @@ namespace ATM_App
                 {
                     if (pinNumber.Length == 4 && int.TryParse(pinNumber, out int pinNum))
                     {
+                        Utility.Animation();
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("\n**********************************************");
                         Console.WriteLine($"PIN: {pinNum}");
@@ -93,6 +94,7 @@ namespace ATM_App
                     }
                     else
                     {
+                        Utility.Animation();
                         Console.WriteLine("PIN ezighi ezi. Biko nwaa ozo");
                         pinNumber = Console.ReadLine();
                     }
@@ -119,6 +121,7 @@ namespace ATM_App
 
             while (isTrue)
             {
+                Utility.Animation();
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("****************AUTOMATED TELLER MACHINE**************\n");
                 Console.WriteLine("\tPinye 1 ka ilele nha nha ugbu a\n");
@@ -133,29 +136,32 @@ namespace ATM_App
                 switch (userInput)
                 {
                     case 1:
+                        Utility.Animation();
                         Console.WriteLine("\n****************************************");
                         Console.WriteLine("Nhazi gi ugbu a bu $ {0} ", amount);
                         Console.WriteLine("****************************************");
                         break;
                     case 2:
+                        Utility.Animation();
                         Console.WriteLine("\nTinye ego na $$ ka iwepu : ");
                         withdraw = int.Parse(Console.ReadLine());
                         if (withdraw % 100 != 0)
-                        {
+                        {                            
                             Console.WriteLine("\nBiko tinye ego n'ihe kariri 100");
                         }
                         else if (withdraw > (amount - 1000))
-                        {
+                        {                            
                             Console.WriteLine("\nNdo! EGO NA-ECHICHE");
                         }
                         else
-                        {
+                        {                            
                             amount = amount - withdraw;
                             Console.WriteLine("\n\nBiko chikota ego gi");
                             Console.WriteLine("\nNhazi oge ugbu a bu $ {0}", amount);
                         }
                         break;
                     case 3:
+                        Utility.Animation();
                         Console.WriteLine("\nTinye ego i choro ibufe(na $$)");
                         deposit = int.Parse(Console.ReadLine());
                         amount = amount + deposit;
@@ -163,6 +169,7 @@ namespace ATM_App
                         Console.WriteLine("Ngukota nguzozi gi bu $ {0}", amount);
                         break;
                     case 4:
+                        Utility.Animation();
                         Console.WriteLine("Daalu maka gi na ulo aku...");
                         isTrue = false;
                         break;

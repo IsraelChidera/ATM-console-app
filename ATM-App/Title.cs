@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace ATM_App
 {
-    internal class Title
+    public static class Title
     {
-        private string _appName;
+        private static string _appName = "AUTOMATED TELLER MACHINE";
 
-        public Title() { _appName = "My Multi-lingual ATM App"; }       
+        /*public Title() { _appName = "My Multi-lingual ATM App"; }   */    
 
-        public void showTitle()
+        public static void showTitle()
         {
-            Console.WriteLine("*********** Welcome onboard ************");
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("\t{0}\n",_appName);
+            Console.WriteLine("*******************************************************************");            
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("****************{0}****************\n", _appName);
             Console.ResetColor();
         }
     }

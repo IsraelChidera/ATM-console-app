@@ -15,6 +15,7 @@ namespace ATM_App
 
         public void ATMPidgin()
         {
+            Utility.Animation();
             Console.WriteLine("************* Automated Teller Machine ******************");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("\tVersion na version 1.3");
@@ -31,6 +32,7 @@ namespace ATM_App
 
         public void ValidateCardNumber()
         {
+            Utility.Animation();
             Console.WriteLine("Card number suppose dey up to 6 digits");
 
             string cardNumber = Console.ReadLine();
@@ -40,6 +42,7 @@ namespace ATM_App
                 {
                     if (cardNumber.Length == 6 && int.TryParse(cardNumber, out int cardNum))
                     {
+                        Utility.Animation();
                         Console.WriteLine("**********************************************");
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Congrats... Card number dey valid");
@@ -50,6 +53,7 @@ namespace ATM_App
                     }
                     else
                     {
+                        Utility.Animation();
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Input no correct. Abeg try again");
                         cardNumber = Console.ReadLine();
@@ -83,6 +87,7 @@ namespace ATM_App
                 {
                     if (pinNumber.Length == 4 && int.TryParse(pinNumber, out int pinNum))
                     {
+                        Utility.Animation();
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("\n**********************************************");
                         Console.WriteLine($"PIN: {pinNum}");
@@ -93,6 +98,7 @@ namespace ATM_App
                     }
                     else
                     {
+                        Utility.Animation();
                         Console.WriteLine("PIN dey invalid. Abeg try again");
                         pinNumber = Console.ReadLine();
                     }
@@ -119,6 +125,7 @@ namespace ATM_App
 
             while (isTrue)
             {
+                Utility.Animation();
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("****************AUTOMATED TELLER MACHINE**************\n");
                 Console.WriteLine("\tType 1 if you wan view Current Balance\n");
@@ -133,11 +140,13 @@ namespace ATM_App
                 switch (choice)
                 {
                     case 1:
+                        Utility.Animation();
                         Console.WriteLine("\n****************************************");
                         Console.WriteLine("YOUR CURRENT BALANCE NA $ {0} ", amount);
                         Console.WriteLine("****************************************");
                         break;
                     case 2:
+                        Utility.Animation();
                         Console.WriteLine("\nENTER AMOUNT IN $$ WEY YOU WAN WITHDRAW : ");
                         withdraw = int.Parse(Console.ReadLine());
                         if (withdraw % 100 != 0)
@@ -156,6 +165,7 @@ namespace ATM_App
                         }
                         break;
                     case 3:
+                        Utility.Animation();
                         Console.WriteLine("\nABEG ENTER AMOUNT YOU WAN TRANSFER(IN $$)");
                         deposit = int.Parse(Console.ReadLine());
                         amount = amount + deposit;
@@ -163,6 +173,7 @@ namespace ATM_App
                         Console.WriteLine("YOUR TOTAL BALANCE NA $ {0}", amount);
                         break;
                     case 4:
+                        Utility.Animation();
                         Console.WriteLine("Thank you for banking with us...");
                         isTrue = false;
                         break;
