@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ATM_App
+﻿namespace ATM_App
 {
     public static class Utility
     {
-        public static void Animation(int timer=15)
+        private static string _amount;
+
+        public static string Amount
         {
-            for(var i=0; i<timer; i++)
+            get; set;
+        }
+
+        public static void Animation(int timer = 15)
+        {
+            for (var i = 0; i < timer; i++)
             {
                 Console.Write(".");
                 Thread.Sleep(200);
@@ -33,5 +34,13 @@ namespace ATM_App
                 }
             }
         }
+
+        
+
+        public static void SucessfullTransferPrompts(string message)
+        {
+            Console.WriteLine(message);
+        }
+
     }
 }

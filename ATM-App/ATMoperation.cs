@@ -7,11 +7,16 @@ using System.Threading.Tasks;
 namespace ATM_App
 {
     class ATMoperation
-    {
+    {            
+
         public ATMoperation()
         {
-
+            
         }
+
+        
+
+        public delegate void PromptOperations(string message);
 
         public void ValidateCardNumber()
         {
@@ -95,12 +100,58 @@ namespace ATM_App
             }
         }
 
+        public static void ValidateAccountNumber()
+        {
+
+            Console.WriteLine("Account number must be up to 8 digits");
+
+            string accountNumber = Console.ReadLine();
+            while (true)
+            {
+                try
+                {
+                    if (accountNumber.Length == 8 && int.TryParse(accountNumber, out int accountNum))
+                    {
+                        Utility.Animation();
+                        Console.WriteLine("\n**********************************************");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Congrats... Valid account number");
+                        Console.WriteLine($"Account number: {accountNum}");
+                        Console.ResetColor();
+                        Console.WriteLine("**********************************************\n");
+                        break;
+                    }
+                    else
+                    {
+                        Utility.Animation();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\nInvalid input. Please try again");
+                        accountNumber = Console.ReadLine();
+                        Console.ResetColor();
+                    }
+                }
+                catch (Exception exception)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nPlease enter a valid account number");
+
+                    Console.WriteLine(exception.Message);
+                    Console.ResetColor();
+                    continue;
+                }
+            }
+
+
+        }
+
         public void Transactions()
         {
-            int amount = 2034;
+            int amount = 200000;
             int deposit;
             int withdraw;
             int choice;
+            int transfer;
+
             Console.WriteLine("\n\nWHAT DO YOU WANT TO DO?");
             bool isTrue = true;
 
@@ -115,7 +166,7 @@ namespace ATM_App
                 Console.WriteLine("\tType 4 to cancel transactions \n");
                 Console.WriteLine("\tType 5 to transfer cash \n");
                 Console.WriteLine("\tType 0 to change language/main menu \n");
-                Console.WriteLine("****************************************************\n\n");
+                Console.WriteLine("*****************************************************\n\n");
                 Console.Write("========> ");
                 Console.ResetColor();
 
@@ -124,12 +175,14 @@ namespace ATM_App
                 switch (choice)
                 {
                     case 1:
+                        Console.Clear();
                         Utility.Animation();
                         Console.WriteLine("\n****************************************");
                         Console.WriteLine("YOUR CURRENT BALANCE IS $ {0} ", amount);
                         Console.WriteLine("****************************************");
                         break;
                     case 2:
+                        Console.Clear();
                         Utility.Animation();
                         Console.WriteLine("\nENTER AMOUNT IN $$ TO WITHDRAW : ");
                         withdraw = int.Parse(Console.ReadLine());
@@ -149,22 +202,33 @@ namespace ATM_App
                         }
                         break;
                     case 3:
+                        Console.Clear();
                         Utility.Animation();
-                        Console.WriteLine("\nENTER THE AMOUNT YOU WANT TO TRANSFER(IN $$)");
+                        Console.WriteLine("\nENTER THE AMOUNT YOU WANT TO DEPOSIT(IN $$)");
                         deposit = int.Parse(Console.ReadLine());
                         amount = amount + deposit;
                         Console.WriteLine("YOUR AMOUNT HAS BEEN DEPOSITED SUCCESSFULLY..");
                         Console.WriteLine("YOUR TOTAL BALANCE IS $ {0}", amount);
                         break;
                     case 4:
+                        Console.Clear();
                         Utility.Animation();
                         Console.WriteLine("Thank you for banking with us...");
                         isTrue = false;
                         break;
                     case 5:
+                        Utility.Animation();
                         Console.WriteLine("Transfer ....");
+                        ValidateAccountNumber();
+                        Console.WriteLine("\nENTER THE AMOUNT YOU WANT TO TRANSFER(IN $$)");
+                        transfer = int.Parse(Console.ReadLine());
+                        amount = amount - transfer;
+                        Console.WriteLine("YOUR AMOUNT HAS BEEN TRANSFERRED SUCCESSFULLY..");
+                        PromptOperations operations = new PromptOperations(Utility.SucessfullTransferPrompts);
+                        operations.Invoke($"Transfer successful...");
                         break;
-                    case 0:                        
+                    case 0:
+                        Console.Clear();
                         ATMhome home = new();
                         home.Home();
                         break;
