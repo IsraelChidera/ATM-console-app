@@ -8,6 +8,14 @@ namespace ATM_App
 {
     class ATMoperation
     {            
+        private int amount = 200000;
+        private int deposit;
+        private int withdraw;
+        private int choice;
+        private int transfer;
+
+        event Action<string> WithdrawSuccessful;
+        public event EventHandler<string> OnWithdrawSuccessfulL;
 
         public ATMoperation()
         {
@@ -146,11 +154,7 @@ namespace ATM_App
 
         public void Transactions()
         {
-            int amount = 200000;
-            int deposit;
-            int withdraw;
-            int choice;
-            int transfer;
+            
 
             Console.WriteLine("\n\nWHAT DO YOU WANT TO DO?");
             bool isTrue = true;
@@ -197,7 +201,8 @@ namespace ATM_App
                         else
                         {
                             amount = amount - withdraw;
-                            Console.WriteLine("\n\nPLEASE COLLECT YOUR CASH");
+                            AddWithdrawSuccessful(HandleWithdrawSuccess);
+                            OnWithdrawSuccessful("\nPLEASE COLLECT YOUR CASH");                            
                             Console.WriteLine("\nCURRENT BALANCE IS $ {0}", amount);
                         }
                         break;
@@ -239,6 +244,21 @@ namespace ATM_App
 
             }
 
+        }
+
+        private void AddWithdrawSuccessful(Action<string> method)
+        {
+            WithdrawSuccessful += method;
+        }
+
+        private void OnWithdrawSuccessful(string message)
+        {
+            WithdrawSuccessful?.Invoke(message);
+        }
+
+        private void HandleWithdrawSuccess(string message)
+        {
+            Console.WriteLine($"You have withdrawn successfully{message}");
         }
     }
 }
